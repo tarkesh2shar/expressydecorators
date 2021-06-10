@@ -1,0 +1,32 @@
+{
+  "name": "@utilitiesfornodejs/decorators",
+  "version": "1.0.0",
+  "description": "A set of express decorators that can be helpful for projects ",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "dev": "npm run build && nodemon dist/example/example.js",
+    "clean": "rimraf ./dist/*",
+    "build": "npm run clean && tsc",
+    "pub": "git add . && git commit -m  \"Updates\" && npm version patch && npm run build && npm publish"
+  },
+  "keywords": [
+    "express-decorators"
+  ],
+  "author": "tarkesh2shar",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.2",
+    "reflect-metadata": "^0.1.13",
+    "@types/express": "^4.17.12",
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+  }
+}
