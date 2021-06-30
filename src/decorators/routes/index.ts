@@ -5,7 +5,7 @@ function routerBinder(method:string){
 return function (path:string){
     return function(target:any,key:string,desc:PropertyDescriptor){
         Reflect.defineMetadata(MetaDataKeys.path,path,target,key);
-        Reflect.defineMetadata(MetaDataKeys.Method,'get',target,key);
+        Reflect.defineMetadata(MetaDataKeys.Method,'get',target,key); 
     }
 }
 }

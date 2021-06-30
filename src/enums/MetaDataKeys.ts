@@ -1,4 +1,15 @@
-export enum MetaDataKeys{
-    Method='method',
-    path='path'
+export enum MetaDataKeys {
+  Method = "method",
+  path = "path",
+  Params = "params",
+  Queries = "queries",
+  Body = "body",
+  SingleParam = "singleParam",
+  SingleSearchParam = "singleSearchParam",
+  SingleQuery = "singleQuery",
+  SingleSearchQuery = "singleSearchQuery",
+  SingleBody = "singleBody",
+  SingleSearchBody = "singleSearchBody",
+  SwaggerPathDoc = "swaggerPathDoc",
+  SwaggerQueryItem = "swaggerQueryItem",
 }

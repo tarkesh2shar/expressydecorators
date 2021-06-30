@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    //add content of file list here
+    "esbenp.prettier-vscode"
+  ]
+}
