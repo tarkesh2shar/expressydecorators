@@ -21,6 +21,11 @@ interface swaggerBase {
   definitions: {};
 }
 export let swaggerbase: swaggerBase;
-export function InitializeSwagger(swaggerBase: swaggerBase) {
+
+export function InitializeSwagger(
+  swaggerBase: swaggerBase,
+  callback: Function
+) {
   swaggerbase = swaggerBase;
+  callback();
 }

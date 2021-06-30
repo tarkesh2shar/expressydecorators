@@ -71,51 +71,56 @@ export function Controller(prefix: string) {
             key
           );
           //swagger stuff //
-          if (!swaggerbase)
-            throw new Error(
-              "Initial data for swagger is not Provided, Please initialize it .."
-            );
-          let swaggerJsonPath = `${process.cwd()}/swagger.json`;
-          if (fs.existsSync(swaggerJsonPath)) {
-            fs.readFile(swaggerJsonPath, "utf8", (err, data) => {
-              if (err)
-                throw new Error(" Error in reading the  Json  provided !");
-              let swaggerData = JSON.parse(data);
+          // if (!swaggerbase)
+          //   throw new Error(
+          //     "Initial data for swagger is not Provided, Please initialize it .."
+          //   );
 
-              for (const key in swaggerbase) {
-                if (swaggerData[key] == undefined) {
-                  swaggerData[key] = (swaggerbase as any)[key];
-                }
-              }
+          if (swaggerbase) {
+            let swaggerJsonPath = `${process.cwd()}/swagger.json`;
+            if (fs.existsSync(swaggerJsonPath)) {
+              fs.readFile(swaggerJsonPath, "utf8", (err, data) => {
+                if (err)
+                  throw new Error(" Error in reading the  Json  provided !");
+                let swaggerData = JSON.parse(data);
 
-              let swaggerPath = swaggerData.paths;
-              let pathKey = `${prefix}${path}`;
-              let swaggerizePathKey = pathKeySwaggerizer(pathKey);
-              let swaggerPathDoc = Reflect.getMetadata(
-                MetaDataKeys.SwaggerPathDoc,
-                target.prototype,
-                key
-              );
-              let pathValue: any = {};
-              pathValue[method] = {
-                ...swaggerPathDoc,
-              };
-              swaggerPath[swaggerizePathKey] = pathValue;
-              swaggerData["paths"] = swaggerPath;
-
-              if (swaggerPathDoc) {
-                fs.writeFile(
-                  swaggerJsonPath,
-                  JSON.stringify(swaggerData),
-                  (err) => {
-                    if (err)
-                      throw new Error("Error while writing into JSON path");
+                for (const key in swaggerbase) {
+                  if (swaggerData[key] == undefined) {
+                    swaggerData[key] = (swaggerbase as any)[key];
                   }
+                }
+
+                let swaggerPath = swaggerData.paths;
+                let pathKey = `${prefix}${path}`;
+                let swaggerizePathKey = pathKeySwaggerizer(pathKey);
+                let swaggerPathDoc = Reflect.getMetadata(
+                  MetaDataKeys.SwaggerPathDoc,
+                  target.prototype,
+                  key
                 );
-              }
-            });
-          } else {
-            throw new Error(" Swagger Json file not Found at path provided !");
+                let pathValue: any = {};
+                pathValue[method] = {
+                  ...swaggerPathDoc,
+                };
+                swaggerPath[swaggerizePathKey] = pathValue;
+                swaggerData["paths"] = swaggerPath;
+
+                if (swaggerPathDoc) {
+                  fs.writeFile(
+                    swaggerJsonPath,
+                    JSON.stringify(swaggerData),
+                    (err) => {
+                      if (err)
+                        throw new Error("Error while writing into JSON path");
+                    }
+                  );
+                }
+              });
+            } else {
+              throw new Error(
+                " Swagger Json file not Found at path provided !"
+              );
+            }
           }
 
           let arrArgs: any = [];
