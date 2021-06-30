@@ -1,5 +1,5 @@
 {
-  "name": "@utilitiesfornodejs/decorators",
+  "name": "expressydecorators",
   "version": "1.0.1",
   "description": "A set of express decorators that can be helpful for projects ",
   "main": "./dist/index.js",
