@@ -77,7 +77,7 @@ export function Controller(prefix: string) {
           //   );
 
           if (swaggerbase) {
-            let swaggerJsonPath = `${process.cwd()}/src/swagger.json`;
+            let swaggerJsonPath = `${process.cwd()}/swagger.json`;
             if (fs.existsSync(swaggerJsonPath)) {
               fs.readFile(swaggerJsonPath, "utf8", (err, data) => {
                 if (err)

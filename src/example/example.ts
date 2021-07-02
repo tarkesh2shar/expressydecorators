@@ -3,7 +3,7 @@ import { Router } from "express";
 import { InitializeDecorators, InitializeSwagger } from "../";
 
 const swaggerUi = require("swagger-ui-express"),
-  swaggerDocument = require("./src/swagger.json");
+  swaggerDocument = require("./swagger.json");
 
 const app = express();
 const router = Router();
