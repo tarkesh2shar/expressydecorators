@@ -71,6 +71,7 @@ export class LoginController {
     @Queries() query: any,
     @Params() param: any
   ) {
+    console.log("process.cwd()", process.cwd());
     console.log("query", query);
     console.log("params", param);
 
