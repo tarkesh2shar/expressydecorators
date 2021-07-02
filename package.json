@@ -1,6 +1,6 @@
 {
   "name": "expressydecorators",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A set of express decorators that can be helpful for projects ",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
